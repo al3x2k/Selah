@@ -141,12 +141,20 @@ if (window.location.pathname.includes("fast-log.html")) {
 
 function checkForCurrentFast(){
   const currentFast = JSON.parse(localStorage.getItem("currentFast"));
-  const resumeDiv = document.getElementById("resumeFastContainer"));
+  const resumeDiv = document.getElementById("resumeFastContainer");
 
   if(currentFast && !currentFast.completed){
-    resumeDiv.innerHTML=`<p>You have an ongoing fast: <strong>${currentFast.reason}</strong>strong></p>
+    resumeDiv.innerHTML=`<p>You have an ongoing fast: <strong>${currentFast.reason}</strong></p>
     <button onclick="window.location.href='countdown.html'">View Current Fast</button>`;
-    
+  }
+}
+
+function deleteFast(index) {
+  if (confirm("Are you sure you want to delete this fast entry?")) {
+    let logs = JSON.parse(localStorage.getItem("fastLogs")) || [];
+    logs.splice(index, 1);
+    localStorage.setItem("fastLogs", JSON.stringify(logs));
+    loadFastHistory(); // Reload the display
   }
 }
 
