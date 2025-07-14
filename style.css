@@ -15,19 +15,7 @@ body {
   background-color: #fef9f5;
   padding: 2rem;
   color: #2c2c2c;
-  background-image: url('images/backgrounds/day-desktop.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   min-height: 100vh;
-}
-
-/* Mobile wallpaper for light mode */
-@media (max-width: 768px) {
-  body {
-    background-image: url('images/backgrounds/day-mobile.png');
-  }
 }
 
 h1 {
@@ -243,22 +231,41 @@ h1 {
 body.dark-mode {
   background-color: #1a1a1a;
   color: #e0e0e0;
-  background-image: url('images/backgrounds/night-desktop.png');
 }
 
 body.light-mode {
   background-color: #fef9f5;
   color: #2c2c2c;
+}
+
+/* Countdown page wallpapers only */
+body[data-page="countdown"] {
+  background-image: url('images/backgrounds/day-desktop.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body[data-page="countdown"].dark-mode {
+  background-image: url('images/backgrounds/night-desktop.png');
+}
+
+body[data-page="countdown"].light-mode {
   background-image: url('images/backgrounds/day-desktop.png');
 }
 
-/* Mobile wallpapers for dark mode */
+/* Mobile wallpapers for countdown page only */
 @media (max-width: 768px) {
-  body.dark-mode {
+  body[data-page="countdown"] {
+    background-image: url('images/backgrounds/day-mobile.png');
+  }
+  
+  body[data-page="countdown"].dark-mode {
     background-image: url('images/backgrounds/night-mobile.png');
   }
   
-  body.light-mode {
+  body[data-page="countdown"].light-mode {
     background-image: url('images/backgrounds/day-mobile.png');
   }
 }
