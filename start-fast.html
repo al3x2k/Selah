@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Make scalable based on device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Start a Fast</title>
+    <!--Link to CSS file-->
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>Start a New Fast</h1>
+
+    <!-- User's fasting information - reason -->
+    <label for="reason">Why are you fasting?</label><br>
+    <input type="text" id="reason" placeholder="Enter your reason here!"><br><br>
+    <label for="fastType">Type of Fast</label><br>
+    <select id="fastType">
+      <option value="">--Choose a Fast Type--</option>
+      <option value="soul">Soul Fast (digital detox, lifestyle habits, emotional reset)</option>
+      <option value="food">Food Fast (full, partial, or specific food types)</option>
+      <option value="prayer">Prayer-Focused Fast (deepening time in prayer)</option>
+      <option value="worship">Worship-Focused Fast (setting aside time to honor God)</option>
+      <option value="media">Media Fast (socials, streaming, news, distractions)</option>
+      <option value="custom">Custom Fast (personal reason)</option>
+    </select><br><br>
+
+    <!-- User's fasting information - duration -->
+    <label for="endTime">When will your fast end?</label><br>
+    <input type="datetime-local" id="endTime"><br><br>
+
+    <!-- Button to start the fast -->
+    <button onclick="startFast()">Start Fast</button>
+  
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>

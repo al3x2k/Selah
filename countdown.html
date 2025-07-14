@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fasting Countdown</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>Your Fast Is In Progress</h1>
+
+    <!-- Fasting Information -->
+    <p><strong>Reason: </strong><span id="reasonDisplay"></span></p>
+    <p><strong>Fast Type: </strong><span id="typeDisplay"></span></p>
+
+    <!-- Countdown Timer -->
+    <h2>Time Remaining:</h2>
+    <div id="countdown" style="font-size: 2rem>"
+
+    <!--Encouraging Message-->
+    <div id="encouragement" style="margin-top: 2rem"></div>
+      
+    <!-- Button to end the fast -->
+    <button onclick="endFast()">End Fast</button>
+
+    <!-- Link to Verse Bank -->
+    <script src="verseBank.js"></script>
+      
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>
