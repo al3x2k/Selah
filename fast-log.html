@@ -67,6 +67,19 @@
     // Run it on load
     loadFastHistory();
 
+    function deleteFast(indexToRemove) {
+        let logs = JSON.parse(localStorage.getItem("fastLogs")) || [];
+
+        // Remove the fast at that index
+        logs.splice(indexToRemove, 1);
+
+        // Save the updated logs back
+        localStorage.setItem("fastLogs", JSON.stringify(logs));
+
+        // Refresh the page
+        loadFastHistory();
+      }
+
     <!-- Link to JavaScript file -->
     <script src="script.js"></script>
 </body>
