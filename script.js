@@ -135,3 +135,22 @@ function displayRandomVerse(fastType){
   document.getElementById("encouragement").innerText = verse;
   }
 
+if (window.location.pathname.includes("fast-log.html")) {
+  loadFastHistory();
+}
+
+function checkForCurrentFast(){
+  const currentFast = JSON.parse(localStorage.getItem("currentFast"));
+  const resumeDiv = document.getElementById("resumeFastContainer"));
+
+  if(currentFast && !currentFast.completed){
+    resumeDiv.innerHTML=`<p>You have an ongoing fast: <strong>${currentFast.reason}</strong>strong></p>
+    <button onclick="window.location.href='countdown.html'">View Current Fast</button>`;
+    
+  }
+}
+
+//Only run on the home page
+if(window.location.pathname.includes("index.html")){
+  checkForCurrentFast();
+}
