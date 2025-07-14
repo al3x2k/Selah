@@ -149,3 +149,33 @@ function checkForCurrentFast(){
 if(window.location.pathname.includes("index.html") || window.location.pathname === "/"){
   checkForCurrentFast();
 }
+
+fetch('themeToggle.html')
+.then(res => res.text())
+.then(html => {
+  document.getElementById('theme-toggle-placeholder').innerHTML = html;
+
+  // Theme logic AFTER the toggle has loaded
+  const toggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  if (localStorage.getItem('theme') === 'dark' ||
+      (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    toggle.checked = true;
+    body.classList.add('dark-mode');
+  } else {
+    body.classList.add('light-mode');
+  }
+
+  toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+      body.classList.remove('light-mode');
+      body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+});
