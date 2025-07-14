@@ -270,3 +270,235 @@ body[data-page="countdown"].light-mode {
   }
 }
 
+/* Countdown Widget Styles */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
+.countdown-widget {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .countdown-widget {
+  background: rgba(26, 26, 26, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.widget-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark-mode .widget-title {
+  background: linear-gradient(135deg, #a8b8ff 0%, #c8a8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fast-info {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.info-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.dark-mode .info-value {
+  color: #e2e8f0;
+}
+
+.countdown-display {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .countdown-display {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.time-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.countdown-timer {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .countdown-timer {
+  background: linear-gradient(135deg, #ff9999 0%, #ffaa88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.encouragement-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(103, 183, 164, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #67b7a4;
+}
+
+.dark-mode .encouragement-section {
+  background: rgba(103, 183, 164, 0.15);
+  border-left-color: #9dccc1;
+}
+
+.encouragement-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: #2d3748;
+}
+
+.dark-mode .encouragement-text {
+  color: #e2e8f0;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.primary-button, .secondary-button {
+  flex: 1;
+  min-width: 140px;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.8);
+  color: #4a5568;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .secondary-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.secondary-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.dark-mode .secondary-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .countdown-widget {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .widget-title {
+    font-size: 1.5rem;
+  }
+  
+  .countdown-timer {
+    font-size: 2rem;
+  }
+  
+  .fast-info {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .primary-button, .secondary-button {
+    width: 100%;
+  }
+}
+

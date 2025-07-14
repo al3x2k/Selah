@@ -10,24 +10,37 @@
   <body data-page="countdown">
     <div id="theme-toggle-placeholder"></div>
 
-    <h1>Your Fast Is In Progress</h1>
+    <div class="countdown-container">
+      <div class="countdown-widget">
+        <div class="countdown-header">
+          <h1 class="widget-title">Your Fast Is In Progress</h1>
+          <div class="fast-info">
+            <div class="info-item">
+              <span class="info-label">Reason</span>
+              <span class="info-value" id="reasonDisplay"></span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Type</span>
+              <span class="info-value" id="typeDisplay"></span>
+            </div>
+          </div>
+        </div>
 
-    <!-- Fasting Information -->
-    <p><strong>Reason: </strong><span id="reasonDisplay"></span></p>
-    <p><strong>Fast Type: </strong><span id="typeDisplay"></span></p>
+        <div class="countdown-display">
+          <div class="time-label">Time Remaining</div>
+          <div id="countdown" class="countdown-timer"></div>
+        </div>
 
-    <!-- Countdown Timer -->
-    <h2>Time Remaining:</h2>
-    <div id="countdown" style="font-size: 2rem;"></div>
+        <div class="encouragement-section">
+          <div id="encouragement" class="encouragement-text"></div>
+        </div>
 
-    <!--Encouraging Message-->
-    <div id="encouragement" style="margin-top: 2rem;"></div>
-      
-    <!-- Button to end the fast -->
-    <button onclick="endFast()">End Fast</button>
-
-    <!-- Button to go back to the home page -->
-    <button onclick="location.href='index.html'">Back to Home</button>
+        <div class="button-group">
+          <button class="primary-button" onclick="endFast()">End Fast</button>
+          <button class="secondary-button" onclick="location.href='index.html'">Back to Home</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Link to Verse Bank -->
     <script src="verseBank.js"></script>
