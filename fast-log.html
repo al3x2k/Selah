@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Fast Log</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My Fast Log</h1>
+    <div id="fastHistory"></div>
+    <button onclick="location.href='index.html'">Back to Home</button>
+    
+    <script>
+        // Load and display fast history
+        function loadFastHistory() {
+            const logs = JSON.parse(localStorage.getItem("fastLogs")) || [];
+            const historyDiv = document.getElementById("fastHistory");
+            
+            if (logs.length === 0) {
+                historyDiv.innerHTML = "<p>No completed fasts yet. Start your first fast!</p>";
+                return;
+            }
+            
+            historyDiv.innerHTML = logs.map(fast => `
+                <div style="border: 1px solid #ccc; margin: 10px 0; padding: 15px; border-radius: 5px;">
+                    <h3>${fast.reason}</h3>
+                    <p><strong>Type:</strong> ${formatFastType(fast.fastType)}</p>
+                    <p><strong>Started:</strong> ${new Date(fast.startTime).toLocaleString()}</p>
+                    <p><strong>Ended:</strong> ${new Date(fast.endTime).toLocaleString()}</p>
+                    <p><strong>Status:</strong> ${fast.completed ? 'Completed' : 'In Progress'}</p>
+                </div>
+            `).join('');
+        }
+        
+        // Helper to format fast type names
+        function formatFastType(type) {
+            const labels = {
+                soul: "Soul Fast",
+                food: "Food Fast",
+                prayer: "Prayer-Focused Fast",
+                worship: "Worship-Focused Fast",
+                media: "Media Fast",
+                custom: "Custom Fast"
+            };
+            return labels[type] || "Unknown Type";
+        }
+        
+        // Load history when page loads
+        loadFastHistory();
+    </script>
+</body>
+</html>

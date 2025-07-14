@@ -41,6 +41,9 @@ function loadCountdown(){
   document.getElementById("reasonDisplay").innerText = fastData.reason;
   document.getElementById("typeDisplay").innerText = fastData.fastType;
 
+  // Display a random encouraging verse
+  displayRandomVerse(fastData.fastType);
+
   // Countdown logic
   const countdownEl = document.getElementById("countdown");
 
