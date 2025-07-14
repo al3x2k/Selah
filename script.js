@@ -135,10 +135,6 @@ function displayRandomVerse(fastType){
   document.getElementById("encouragement").innerText = verse;
   }
 
-if (window.location.pathname.includes("fast-log.html")) {
-  loadFastHistory();
-}
-
 function checkForCurrentFast(){
   const currentFast = JSON.parse(localStorage.getItem("currentFast"));
   const resumeDiv = document.getElementById("resumeFastContainer");
@@ -149,16 +145,7 @@ function checkForCurrentFast(){
   }
 }
 
-function deleteFast(index) {
-  if (confirm("Are you sure you want to delete this fast entry?")) {
-    let logs = JSON.parse(localStorage.getItem("fastLogs")) || [];
-    logs.splice(index, 1);
-    localStorage.setItem("fastLogs", JSON.stringify(logs));
-    loadFastHistory(); // Reload the display
-  }
-}
-
 //Only run on the home page
-if(window.location.pathname.includes("index.html")){
+if(window.location.pathname.includes("index.html") || window.location.pathname === "/"){
   checkForCurrentFast();
 }

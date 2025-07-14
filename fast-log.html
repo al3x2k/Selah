@@ -1,84 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Fast Log - Selah</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Fast Log - Selah</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>My Fast Log</h1>
+    <h1>My Fast Log</h1>
 
-  <div id="fastHistory"></div>
+    <div id="fastHistory"></div>
 
-  <button class="back-button" onclick="location.href='index.html'">Back to Home</button>
+    <button class="back-button" onclick="location.href='index.html'">Back to Home</button>
 
-  <script>
-    function loadFastHistory() {
-      const logs = JSON.parse(localStorage.getItem("fastLogs")) || [];
-      const historyDiv = document.getElementById("fastHistory");
+    <script>
+        // Load and display fast history
+        function loadFastHistory() {
+            const logs = JSON.parse(localStorage.getItem("fastLogs")) || [];
+            const historyDiv = document.getElementById("fastHistory");
 
-      if (logs.length === 0) {
-        historyDiv.innerHTML = "<p>No completed fasts yet. Start your first fast when you're ready 💛</p>";
-        return;
-      }
+            if (logs.length === 0) {
+                historyDiv.innerHTML = "<p>No completed fasts yet. Start your first fast!</p>";
+                return;
+            }
 
-      // Add total count
-      historyDiv.innerHTML = `<p>You’ve completed <strong>${logs.length}</strong> fast${logs.length !== 1 ? "s" : ""}.</p><br>`;
+            historyDiv.innerHTML = `<p>You’ve completed <strong>${logs.length}</strong> fast${logs.length !== 1 ? "s" : ""}.</p><br>` + logs.reverse().map((fast, index) => `
+                <div style="border: 1px solid #ccc; margin: 10px 0; padding: 15px; border-radius: 5px;">
+                    <h3>Fast #${logs.length - index}</h3>
+                    <p><strong>Type:</strong> ${formatFastType(fast.fastType)}</p>
+                    <p><strong>Reason:</strong> ${fast.reason}</p>
+                    <p><strong>Started:</strong> ${new Date(fast.startTime).toLocaleString()}</p>
+                    <p><strong>Ended:</strong> ${new Date(fast.endTime).toLocaleString()}</p>
+                    <p><strong>Status:</strong> ${fast.completed ? 'Completed ✅' : 'In Progress ⏳'}</p>
+                    <button onclick="deleteFast(${logs.length - 1 - index})">🗑️ Delete</button>
+                </div>
+            `).join('');
+        }
 
-      // Reverse so newest is at the top
-        logs.reverse().forEach((fast, index) => {
-          const start = new Date(fast.startTime).toLocaleString();
-          const end = new Date(fast.endTime).toLocaleString();
-          const reason = fast.reason;
-          const type = formatFastType(fast.fastType);
-          const status = fast.completed ? "Completed ✅" : "In Progress ⏳";
+        // Helper to format fast type names
+        function formatFastType(type) {
+            const labels = {
+                soul: "Soul Fast",
+                food: "Food Fast",
+                prayer: "Prayer-Focused Fast",
+                worship: "Worship-Focused Fast",
+                media: "Media Fast",
+                custom: "Custom Fast"
+            };
+            return labels[type] || "Unknown Type";
+        }
 
-          const logEntry = document.createElement("div");
-          logEntry.classList.add("log-entry");
+        function deleteFast(indexToRemove) {
+            if (confirm("Are you sure you want to delete this fast entry?")) {
+              let logs = JSON.parse(localStorage.getItem("fastLogs")) || [];
+              logs.reverse();
+              logs.splice(logs.length - 1 - indexToRemove, 1);
+              logs.reverse();
+              localStorage.setItem("fastLogs", JSON.stringify(logs));
+              loadFastHistory(); // Reload the display
+            }
+        }
 
-          logEntry.innerHTML = `
-            <h3>Fast #${logs.length - index}</h3>
-            <p><strong>Type:</strong> ${type}</p>
-            <p><strong>Reason:</strong> ${reason}</p>
-            <p><strong>Start:</strong> ${start}</p>
-            <p><strong>End:</strong> ${end}</p>
-            <p><strong>Status:</strong> ${status}</p>
-            <button onclick="deleteFast(${logs.length - 1 - index})" style="margin-top: 10px;">🗑️ Delete</button>
-          `;
-
-          historyDiv.appendChild(logEntry);
-        });
-
-    }
-
-    function formatFastType(type) {
-      const labels = {
-        soul: "Soul Fast",
-        food: "Food Fast",
-        prayer: "Prayer-Focused Fast",
-        worship: "Worship-Focused Fast",
-        media: "Media Fast",
-        custom: "Custom Fast"
-      };
-      return labels[type] || "Unknown Type";
-    }
-
-    // Run it on load
-    loadFastHistory();
-
-    function deleteFast(indexToRemove) {
-        let logs = JSON.parse(localStorage.getItem("fastLogs")) || [];
-
-        // Remove the fast at that index
-        logs.splice(indexToRemove, 1);
-
-        // Save the updated logs back
-        localStorage.setItem("fastLogs", JSON.stringify(logs));
-
-        // Refresh the page
+        // Load history when page loads
         loadFastHistory();
-      }
+    </script>
 
     <!-- Link to JavaScript file -->
     <script src="script.js"></script>
